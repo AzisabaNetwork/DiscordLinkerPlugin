@@ -1,0 +1,10 @@
+database:
+  host: "localhost"
+  port: 3306
+  database: "azisaba_discord"
+  username: "minecraft"
+  password: "password"
+  connection-timeout: 30000
+  idle-timeout: 600000
+  max-lifetime: 1800000
+  maximum-pool-size: 10

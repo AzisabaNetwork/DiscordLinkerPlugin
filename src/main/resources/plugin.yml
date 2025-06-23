@@ -1,0 +1,18 @@
+name: DiscordLinkerPlugin
+version: 1.0-SNAPSHOT
+main: net.azisaba.discordlinker.DiscordLinkerPlugin
+api-version: 1.13
+author: Azisaba
+description: Discord account linking plugin for Azisaba
+
+commands:
+  link-azisaba-discord:
+    description: Link your Minecraft account to Discord
+    usage: /link-azisaba-discord
+    permission: discordlinker.link
+    permission-message: "このコマンドを使用する権限がありません。"
+
+permissions:
+  discordlinker.link:
+    description: Allows players to link their Discord account
+    default: true
