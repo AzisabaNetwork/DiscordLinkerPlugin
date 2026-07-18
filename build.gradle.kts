@@ -1,42 +1,33 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
-    id("java")
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.shadow)
 }
 
 group = "net.azisaba"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
+    maven { url = uri("https://repo.azisaba.net/repository/maven-snapshots/") }
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
-    implementation("org.mariadb.jdbc:mariadb-java-client:2.7.9")
-    implementation("com.zaxxer:HikariCP:4.0.3")
-    
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    compileOnly(libs.velocity.api)
+    annotationProcessor(libs.velocity.api)
+    implementation(libs.graph)
+    implementation(libs.mariadb.java.client)
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.hikaricp)
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+kotlin {
+    jvmToolchain(25)
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.shadowJar {
+tasks.named<ShadowJar>("shadowJar") {
     archiveClassifier.set("")
-    
-    relocate("org.mariadb", "net.azisaba.discordlinker.libs.mariadb")
-    relocate("com.zaxxer.hikari", "net.azisaba.discordlinker.libs.hikari")
-    relocate("org.slf4j", "net.azisaba.discordlinker.libs.slf4j")
-}
-
-tasks.build {
-    dependsOn(tasks.shadowJar)
 }
