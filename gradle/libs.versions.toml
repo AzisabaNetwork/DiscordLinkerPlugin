@@ -4,7 +4,7 @@ shadow = "9.6.0"
 
 kotlinx-serialization = "1.11.0"
 kotlinx-coroutines = "1.10.2"
-velocity = "4.1.0-SNAPSHOT"
+velocity = "3.5.0-SNAPSHOT"
 mccoroutine = "2.22.0"
 lettuce = "7.6.0.RELEASE"
 graph = "0.1.0-R0.2-SNAPSHOT"
