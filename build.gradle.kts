@@ -2,6 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.shadow)
 }
 
@@ -17,11 +18,14 @@ repositories {
 dependencies {
     compileOnly(libs.velocity.api)
     annotationProcessor(libs.velocity.api)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.mccoroutine.velocity.api)
+    implementation(libs.mccoroutine.velocity.core)
+    implementation(libs.lettuce.core)
     implementation(libs.graph)
-    implementation(libs.mariadb.java.client)
-    implementation(libs.exposed.core)
-    implementation(libs.exposed.jdbc)
-    implementation(libs.hikaricp)
+    implementation(libs.nanoid)
 }
 
 kotlin {
