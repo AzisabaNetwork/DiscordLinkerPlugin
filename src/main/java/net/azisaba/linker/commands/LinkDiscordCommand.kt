@@ -108,7 +108,7 @@ object LinkDiscordCommand {
         repeat(MAX_LINK_CODE_GENERATION_ATTEMPTS) {
             val linkCode = NanoId.generate(size = LINK_CODE_LENGTH, alphabet = LINK_CODE_ALPHABET)
             val result = set(
-                "$REDIS_KEY_PREFIX:$linkCode",
+                "$REDIS_KEY_PREFIX$linkCode",
                 player.uniqueId.toString(),
                 SetArgs.Builder.nx().ex(LINK_CODE_TTL),
             ).await()
