@@ -2,6 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.shadow)
 }
@@ -17,7 +18,7 @@ repositories {
 
 dependencies {
     compileOnly(libs.velocity.api)
-    annotationProcessor(libs.velocity.api)
+    kapt(libs.velocity.api)
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.coroutines.core)
