@@ -77,7 +77,7 @@ object LinkDiscordCommand {
                         .content("/link-minecraft $linkCode")
                         .color(NamedTextColor.GRAY)
                         .hoverEvent(Component.translatable("chat.copy"))
-                        .clickEvent(ClickEvent.copyToClipboard("/link-minecraft $linkCode"))
+                        .clickEvent(ClickEvent.copyToClipboard("/link-minecraft code:$linkCode"))
                         .build()
                 )
                 .appendNewline()

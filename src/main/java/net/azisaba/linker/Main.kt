@@ -61,7 +61,7 @@ class Main @Inject constructor(
     @Subscribe
     fun onProxyInitialize(event: ProxyInitializeEvent) {
         registerTranslations(Locale.US)
-        registerTranslations(Locale.JAPANESE)
+        registerTranslations(Locale.JAPAN)
         GlobalTranslator.translator().addSource(translationStore)
 
         registerCommand(LinkDiscordCommand.createBrigadierCommand(this, logger, playersApi, redisConnection.async()))
